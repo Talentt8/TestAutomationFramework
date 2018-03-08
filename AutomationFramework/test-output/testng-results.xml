@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="18125" started-at="2018-03-08T11:40:13Z" finished-at="2018-03-08T11:40:31Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="18125" started-at="2018-03-08T11:40:13Z" finished-at="2018-03-08T11:40:31Z">
+      <class name="eobf.TC_2">
+        <test-method status="PASS" signature="setup()[pri:0, instance:eobf.TC_2@131276c2]" name="setup" is-config="true" duration-ms="171" started-at="2018-03-08T13:40:13Z" finished-at="2018-03-08T13:40:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="setupApplication()[pri:0, instance:eobf.TC_2@131276c2]" name="setupApplication" is-config="true" duration-ms="6970" started-at="2018-03-08T13:40:13Z" finished-at="2018-03-08T13:40:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupApplication -->
+        <test-method status="PASS" signature="register(java.lang.reflect.Method)[pri:0, instance:eobf.TC_2@131276c2]" name="register" is-config="true" duration-ms="4" started-at="2018-03-08T13:40:20Z" finished-at="2018-03-08T13:40:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void eobf.TC_2.individualApplication() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- register -->
+        <test-method status="PASS" signature="individualApplication()[pri:0, instance:eobf.TC_2@131276c2]" name="individualApplication" duration-ms="10309" started-at="2018-03-08T13:40:20Z" finished-at="2018-03-08T13:40:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- individualApplication -->
+        <test-method status="PASS" signature="captureStatus(org.testng.ITestResult)[pri:0, instance:eobf.TC_2@131276c2]" name="captureStatus" is-config="true" duration-ms="338" started-at="2018-03-08T13:40:31Z" finished-at="2018-03-08T13:40:31Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=individualApplication status=SUCCESS method=TC_2.individualApplication()[pri:0, instance:eobf.TC_2@131276c2] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- captureStatus -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:eobf.TC_2@131276c2]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-03-08T13:40:31Z" finished-at="2018-03-08T13:40:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="cleanUp()[pri:0, instance:eobf.TC_2@131276c2]" name="cleanUp" is-config="true" duration-ms="312" started-at="2018-03-08T13:40:31Z" finished-at="2018-03-08T13:40:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanUp -->
+      </class> <!-- eobf.TC_2 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
