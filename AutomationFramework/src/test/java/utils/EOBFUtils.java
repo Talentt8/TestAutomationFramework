@@ -8,6 +8,16 @@ import com.aventstack.extentreports.Status;
 
 public class EOBFUtils extends BaseClass{
 
+	
+	/**
+	 * navigateToAboutYou
+	 * This method navigates to the About You tab on the online application. 
+	 * <p>
+	 *
+	 * @param  		
+	 * @return     
+	 * @see
+	 * */
 	public static void navigateToAboutYou() throws Exception{	
 		testInfo.log(Status.INFO, "Navigate to About You page");
 		IWanna.click("linkTermsAndConditions");
@@ -18,6 +28,15 @@ public class EOBFUtils extends BaseClass{
 		Assert.assertTrue(driver.findElement(By.xpath(pro.getProperty("aboutYouHeader"))).isDisplayed());						
 	}
 	
+	/**
+	 * capturePersonalDetails
+	 * This method captures the Personal Details on an online application. 
+	 * <p>
+	 *
+	 * @param  		
+	 * @return     
+	 * @see
+	 * */
 	public static void capturePersonalDetails(){
 		testInfo.log(Status.INFO, "Capture Personal Details");
 		IWanna.selectFromDropdown("ddClientType", red.getCellData("TestData", "ClientType", 2));
@@ -88,6 +107,16 @@ public class EOBFUtils extends BaseClass{
 		IWanna.handleOkAlert();
 	}
 	
+	
+	/**
+	 * captureAdressInformation
+	 * This method captures the Adress Information on an online application. 
+	 * <p>
+	 *
+	 * @param  		
+	 * @return     
+	 * @see
+	 * */
 	public static void captureAdressInformation(){
 		testInfo.log(Status.INFO, "Capture Address Information");
 		IWanna.selectFromDropdown("ddStatus", red.getCellData("TestData", "ResStatus", 2));

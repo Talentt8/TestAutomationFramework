@@ -317,16 +317,27 @@ public class Executor extends BaseClass{
 	}
 	
 	
+	/**
+	 * capture
+	 * Returns the path of the screenshot captured. 
+	 * <p>
+	 *
+	 * @param  		
+	 * @return      String the destination of the screenshot
+	 * @see         
+	 */
 	public static String capture() throws IOException
     {
 		DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy h-m-s");
         Date date = new Date();		
 		
         TakesScreenshot ts = (TakesScreenshot)driver;
+        log.info("Capturing screenshot");
         File source = ts.getScreenshotAs(OutputType.FILE);
         String dest = System.getProperty("user.dir") +"\\Results\\Screenshots\\screenshot"+dateFormat.format(date)+".png";
         File destination = new File(dest);
-        FileUtils.copyFile(source, destination);                            
+        FileUtils.copyFile(source, destination);   
+        log.info("The screenshot path is " + dest);
         return dest;
     }
 			
@@ -334,12 +345,31 @@ public class Executor extends BaseClass{
 		return "";
 	}
 	
-	//Read Text
+	/**
+	 * getElementValue
+	 * Returns the the value of the element on screen. 
+	 * <p>
+	 *
+	 * @param  		String the element displayed on screen whose value you want to return.
+	 * @return      String the value of the element.
+	 * @see         
+	 */
     public String getElementValue (String element) {
         return driver.findElement(By.xpath(pro.getProperty(element))).getAttribute("value");
     }
     
+    
+    /**
+	 * wait
+	 * Waits for the specified number of seconds. 
+	 * <p>
+	 *
+	 * @param  		int the number of seconds you want to wait.
+	 * @return     
+	 * @see         
+	 */
     public void wait(int seconds){
+    	log.info("Waiting " + seconds + " seconds.");
     	driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }
 }
