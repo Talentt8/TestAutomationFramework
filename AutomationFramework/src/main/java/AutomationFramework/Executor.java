@@ -324,7 +324,7 @@ public class Executor extends BaseClass{
 		
         TakesScreenshot ts = (TakesScreenshot)driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
-        String dest = System.getProperty("user.dir") +"\\Screenshots\\screenshot"+dateFormat.format(date)+".png";
+        String dest = System.getProperty("user.dir") +"\\Results\\Screenshots\\screenshot"+dateFormat.format(date)+".png";
         File destination = new File(dest);
         FileUtils.copyFile(source, destination);                            
         return dest;

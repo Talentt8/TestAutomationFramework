@@ -53,7 +53,7 @@ public abstract class BaseClass
 	
 	@BeforeTest
 	public void setup(){
-		htmlReporter = new ExtentHtmlReporter(new File(System.getProperty("user.dir") + "/AutomationReport.html"));
+		htmlReporter = new ExtentHtmlReporter(new File(System.getProperty("user.dir") + "/Results/AutomationReport.html"));
 		htmlReporter.loadXMLConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
 		reports = new ExtentReports();
 		reports.setSystemInfo("Environment", "UAT");
