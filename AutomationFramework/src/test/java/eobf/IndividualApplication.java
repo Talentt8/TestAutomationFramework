@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import AutomationFramework.BaseClass;
 import utils.EOBFUtils;
 
-public class TC_2 extends BaseClass{	
+public class IndividualApplication extends BaseClass{	
 		
 	@Test	
 	public void individualApplication() throws Exception{
