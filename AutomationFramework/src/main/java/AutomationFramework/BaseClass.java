@@ -9,6 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,6 +24,11 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -45,20 +54,40 @@ public abstract class BaseClass
 	public static String mainWindow;
 	public static ReadExcelData red;
 	public static int currentRow = 2;
-	
+		
 	//Reporter
 	public static ExtentReports reports;
 	public static ExtentTest testInfo;
 	public static ExtentHtmlReporter htmlReporter;
 	
 	@BeforeTest
-	public void setup(){
-		htmlReporter = new ExtentHtmlReporter(new File(System.getProperty("user.dir") + "/Results/AutomationReport.html"));
+	public void setup() throws ParserConfigurationException, SAXException, IOException{
+		
+		//
+		//Declare config.xml file path
+		File xmlFile = new File(System.getProperty("user.dir") + "\\config\\config.xml");
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(xmlFile);
+		
+		//Get node list
+		NodeList nlXml = doc.getChildNodes();
+		Node nXml = nlXml.item(0);
+		
+		Element element = (Element)nXml;
+		String env = element.getElementsByTagName("env").item(0).getTextContent();
+		String appName = element.getElementsByTagName("appName").item(0).getTextContent();
+		String appUrl = element.getElementsByTagName("appUrl").item(0).getTextContent();
+		//
+		
+		htmlReporter = new ExtentHtmlReporter(new File(System.getProperty("user.dir") + "/Resources/" + appName + "/Results/AutomationReport.html"));
 		htmlReporter.loadXMLConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
-		reports = new ExtentReports();
-		reports.setSystemInfo("Environment", "UAT");
-		reports.setSystemInfo("Application Name", "EOBF Internet");
-		reports.setSystemInfo("Application Url", "eu.absa.co.za/vehiclefin/VAFOnline.do");
+		reports = new ExtentReports();		
+		
+		reports.setSystemInfo("Environment", env);
+		reports.setSystemInfo("Application Name", appName);
+		reports.setSystemInfo("Application Url", appUrl);
 		reports.attachReporter(htmlReporter);		
 	}
 	
@@ -92,13 +121,27 @@ public abstract class BaseClass
 	
 	@BeforeClass
 	public void setupApplication() throws Exception
-	{		
+	{	
+		//Declare config.xml file path
+		File xmlFile = new File(System.getProperty("user.dir") + "\\config\\config.xml");
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(xmlFile);
+		
+		//Get node list
+		NodeList nlXml = doc.getChildNodes();
+		Node nXml = nlXml.item(0);
+		
+		Element element = (Element)nXml;
+		String appName = element.getElementsByTagName("appName").item(0).getTextContent();
+		
 		// Load test data sheet so we can use in our test(s)
 		log.debug("Loading test data file");
-		red = new ReadExcelData(".\\Resources\\TestData\\Driver.xlsx");
+		red = new ReadExcelData(".\\Resources\\" + appName + "\\TestData\\Driver.xlsx");
 		
 		// Specify the object repository file location.
-		File src = new File(".\\Resources\\ObjectRepositories\\EOBF_Object_Repo.properties");
+		File src = new File(".\\Resources\\" + appName + "\\ObjectRepository\\Object_Repo.properties");
 	
 		// Create  FileInputStream object
 		FileInputStream fis = new FileInputStream(src);
@@ -112,7 +155,6 @@ public abstract class BaseClass
 		log.debug("Starting " + browser + " browser session");
 		
 		startTime = getCurrentTimeStamp();
-		System.out.println("Start time : " + startTime);
 		launchBrowser(browser);
 		driver.get(red.getCellData("Credentials", "url", currentRow));			
 		Thread.sleep(2000);
@@ -131,21 +173,33 @@ public abstract class BaseClass
 	 */
 	public void launchBrowser(String browser){
 		if (browser.equalsIgnoreCase("chrome")){
-			System.setProperty("webdriver.chrome.driver", ".\\Resources\\Webdrivers\\32bit\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", ".\\Resources\\Webdrivers\\Chrome\\32bit\\chromedriver.exe");
 			driver = getDriver();
 	        log.debug("Browser Session Started");
 	        mainWindow = driver.getWindowHandle();
 	        driver.manage().window().maximize();
 		}
 		else if(browser.equalsIgnoreCase("ie")){
-			System.setProperty("webdriver.ie.driver", ".\\Resources\\Webdrivers\\32bit\\IEDriver.exe");
+			System.setProperty("webdriver.ie.driver", ".\\Resources\\Webdrivers\\IE\\32bit\\IEDriver.exe");
+	        driver = new InternetExplorerDriver();
+	        log.debug("Browser Session Started");
+	        driver.manage().window().maximize();
+		}
+		else if(browser.equalsIgnoreCase("edge")){
+			System.setProperty("webdriver.ie.driver", ".\\Resources\\Webdrivers\\Edge\\MicrosoftWebDriver.exe");
+	        driver = new InternetExplorerDriver();
+	        log.debug("Browser Session Started");
+	        driver.manage().window().maximize();
+		}
+		else if(browser.equalsIgnoreCase("firefox")){
+			System.setProperty("webdriver.ie.driver", ".\\Resources\\Webdrivers\\Firefox\\geckodriver.exe");
 	        driver = new InternetExplorerDriver();
 	        log.debug("Browser Session Started");
 	        driver.manage().window().maximize();
 		}
 		else
 		{
-			System.setProperty("webdriver.chrome.driver", ".\\Resources\\Webdrivers\\32bit\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", ".\\Resources\\Webdrivers\\Chrome\\32bit\\chromedriver.exe");
 	        driver = new ChromeDriver();
 	        log.debug("Browser Session Started");
 	        driver.manage().window().maximize();
