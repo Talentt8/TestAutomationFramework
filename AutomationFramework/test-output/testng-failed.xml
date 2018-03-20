@@ -3,7 +3,7 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="eobf.TC_2">
+      <class name="eobf.IndividualApplication">
         <methods>
           <include name="individualApplication"/>
           <include name="cleanUp"/>
@@ -13,7 +13,7 @@
           <include name="tearDown"/>
           <include name="captureStatus"/>
         </methods>
-      </class> <!-- eobf.TC_2 -->
+      </class> <!-- eobf.IndividualApplication -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -7,7 +7,7 @@ import utils.EOBFUtils;
 public class IndividualApplication extends BaseClass{	
 		
 	@Test	
-	public void individualApplication() throws Exception{				
+	public void individualApplication() throws Exception{
 		EOBFUtils.setTestCase("Individual Application", "123");
 		EOBFUtils.navigateToAboutYou();
 		EOBFUtils.capturePersonalDetails();
