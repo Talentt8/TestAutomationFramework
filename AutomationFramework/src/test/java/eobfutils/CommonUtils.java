@@ -1,14 +1,13 @@
-package utils;
+package eobfutils;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import AutomationFramework.BaseClass;
 
 import com.aventstack.extentreports.Status;
 
-public class EOBFUtils extends BaseClass{
+import AutomationFramework.BaseClass;
 
-	
+public class CommonUtils extends BaseClass{
 	/**
 	 * navigateToAboutYou
 	 * This method navigates to the About You tab on the online application. 
@@ -117,7 +116,7 @@ public class EOBFUtils extends BaseClass{
 	 * @return     
 	 * @see
 	 * */
-	public static void captureAdressInformation(){
+	public static void captureAddressInformation(){
 		testInfo.log(Status.INFO, "Capture Address Information");
 		IWanna.selectFromDropdown("ddStatus", red.getCellData("TestData", "ResStatus", 2));
 		IWanna.type("tbResidentialLine1", red.getCellData("TestData", "ResLine1", 2));

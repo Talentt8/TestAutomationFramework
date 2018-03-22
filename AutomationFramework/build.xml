@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Test" default="run" basedir=".">
+	<target name="run" depends="compile">
+		<echo>Testing</echo>
+	</target>
+	
+	<target name="compile" depends="create">
+		<javac includeantruntime="true" srcdir="./src"></javac>
+	</target>
+	
+	<target name="delete">
+		<delete dir="staging"/>
+	</target>
+	
+	<target name="create" depends="delete">
+		<mkdir dir="staging"/>
+	</target>
+	
+</project>
