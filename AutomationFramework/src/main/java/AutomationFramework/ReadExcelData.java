@@ -23,8 +23,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class ReadExcelData {
 	
-	private XSSFSheet sheet;
-	private XSSFWorkbook workbook;
+	public XSSFSheet sheet;
+	public XSSFWorkbook workbook;
 	private XSSFRow row;
 	private XSSFCell cell;
 	

@@ -139,6 +139,7 @@ public abstract class BaseClass
 		// Load test data sheet so we can use in our test(s)
 		log.debug("Loading test data file");
 		red = new ReadExcelData(".\\Resources\\" + appName + "\\TestData\\Driver.xlsx");
+		RunTest.getRows();
 		
 		// Specify the object repository file location.
 		File src = new File(".\\Resources\\" + appName + "\\ObjectRepository\\Object_Repo.properties");

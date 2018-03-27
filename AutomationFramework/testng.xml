@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test name="Test">
     <classes>
-      <class name="eobf.IndividualApplication"/>
+      <class name="eobf.Application"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

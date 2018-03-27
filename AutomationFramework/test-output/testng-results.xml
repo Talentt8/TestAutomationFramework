@@ -2,54 +2,54 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="17180" started-at="2018-03-20T07:42:32Z" finished-at="2018-03-20T07:42:49Z">
+  <suite name="Default suite" duration-ms="9375" started-at="2018-03-26T07:03:47Z" finished-at="2018-03-26T07:03:56Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="17180" started-at="2018-03-20T07:42:32Z" finished-at="2018-03-20T07:42:49Z">
-      <class name="eobf.IndividualApplication">
-        <test-method status="PASS" signature="setup()[pri:0, instance:eobf.IndividualApplication@63e2203c]" name="setup" is-config="true" duration-ms="148" started-at="2018-03-20T09:42:32Z" finished-at="2018-03-20T09:42:32Z">
+    <test name="Default test" duration-ms="9375" started-at="2018-03-26T07:03:47Z" finished-at="2018-03-26T07:03:56Z">
+      <class name="seriti.Application">
+        <test-method status="PASS" signature="setup()[pri:0, instance:seriti.Application@63e2203c]" name="setup" is-config="true" duration-ms="153" started-at="2018-03-26T09:03:47Z" finished-at="2018-03-26T09:03:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="setupApplication()[pri:0, instance:eobf.IndividualApplication@63e2203c]" name="setupApplication" is-config="true" duration-ms="5959" started-at="2018-03-20T09:42:32Z" finished-at="2018-03-20T09:42:38Z">
+        <test-method status="PASS" signature="setupApplication()[pri:0, instance:seriti.Application@63e2203c]" name="setupApplication" is-config="true" duration-ms="6415" started-at="2018-03-26T09:03:47Z" finished-at="2018-03-26T09:03:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupApplication -->
-        <test-method status="PASS" signature="register(java.lang.reflect.Method)[pri:0, instance:eobf.IndividualApplication@63e2203c]" name="register" is-config="true" duration-ms="5" started-at="2018-03-20T09:42:38Z" finished-at="2018-03-20T09:42:38Z">
+        <test-method status="PASS" signature="register(java.lang.reflect.Method)[pri:0, instance:seriti.Application@63e2203c]" name="register" is-config="true" duration-ms="5" started-at="2018-03-26T09:03:53Z" finished-at="2018-03-26T09:03:53Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void eobf.IndividualApplication.individualApplication() throws java.lang.Exception]]>
+                <![CDATA[public void seriti.Application.application() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- register -->
-        <test-method status="PASS" signature="individualApplication()[pri:0, instance:eobf.IndividualApplication@63e2203c]" name="individualApplication" duration-ms="9705" started-at="2018-03-20T09:42:38Z" finished-at="2018-03-20T09:42:48Z">
+        <test-method status="PASS" signature="application()[pri:0, instance:seriti.Application@63e2203c]" name="application" duration-ms="1419" started-at="2018-03-26T09:03:53Z" finished-at="2018-03-26T09:03:55Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- individualApplication -->
-        <test-method status="PASS" signature="captureStatus(org.testng.ITestResult)[pri:0, instance:eobf.IndividualApplication@63e2203c]" name="captureStatus" is-config="true" duration-ms="369" started-at="2018-03-20T09:42:48Z" finished-at="2018-03-20T09:42:48Z">
+        </test-method> <!-- application -->
+        <test-method status="PASS" signature="captureStatus(org.testng.ITestResult)[pri:0, instance:seriti.Application@63e2203c]" name="captureStatus" is-config="true" duration-ms="392" started-at="2018-03-26T09:03:55Z" finished-at="2018-03-26T09:03:55Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=individualApplication status=SUCCESS method=IndividualApplication.individualApplication()[pri:0, instance:eobf.IndividualApplication@63e2203c] output={null}]]]>
+                <![CDATA[[TestResult name=application status=SUCCESS method=Application.application()[pri:0, instance:seriti.Application@63e2203c] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- captureStatus -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:eobf.IndividualApplication@63e2203c]" name="tearDown" is-config="true" duration-ms="715" started-at="2018-03-20T09:42:48Z" finished-at="2018-03-20T09:42:49Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:seriti.Application@63e2203c]" name="tearDown" is-config="true" duration-ms="707" started-at="2018-03-26T09:03:55Z" finished-at="2018-03-26T09:03:56Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="cleanUp()[pri:0, instance:eobf.IndividualApplication@63e2203c]" name="cleanUp" is-config="true" duration-ms="262" started-at="2018-03-20T09:42:49Z" finished-at="2018-03-20T09:42:49Z">
+        <test-method status="PASS" signature="cleanUp()[pri:0, instance:seriti.Application@63e2203c]" name="cleanUp" is-config="true" duration-ms="269" started-at="2018-03-26T09:03:56Z" finished-at="2018-03-26T09:03:56Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanUp -->
-      </class> <!-- eobf.IndividualApplication -->
+      </class> <!-- seriti.Application -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

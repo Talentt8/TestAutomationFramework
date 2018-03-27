@@ -102,8 +102,6 @@ public class CommonUtils extends BaseClass{
 			IWanna.click("rbPostMatricQualificationNo");			
 		}
 		Assert.assertTrue(IWanna.getElementValue("tbDateOfBirth").equalsIgnoreCase("19880601"));
-		IWanna.click("btnProcessContinue");
-		IWanna.handleOkAlert();
 	}
 	
 	
@@ -145,6 +143,36 @@ public class CommonUtils extends BaseClass{
 			IWanna.click("btnSearchPostalCity");
 			IWanna.selectFromDropdown("ddPostalCity", 1);
 		}
+	}
+	
+	public static void captureContactInformation(){
+		IWanna.type("tbAreaCodeHome", red.getCellData("TestData", "AreaCodeHome", 2));
+		IWanna.type("tbTelNoHome", red.getCellData("TestData", "TelNumberHome", 2));
+		IWanna.type("tbAreaCodeWork", red.getCellData("TestData", "AreaCodeWork", 2));
+		IWanna.type("tbTelNoWork", red.getCellData("TestData", "TelNumberWork", 2));
+		IWanna.type("tbCellNo", red.getCellData("TestData", "Cell", 2));
+		IWanna.type("tbEmailAddress", red.getCellData("TestData", "Email", 2));
+		IWanna.selectFromDropdown("ddMethodOfComm", red.getCellData("TestData", "CommunicationMethod", 2));
+		
+		//verify data capture
+		/*try{
+			Assert.assertEquals(IWanna.getElementValue("ddMethodOfComm"),red.getCellData("TestData", "CommunicationMethod", 2));
+		}
+		catch(Throwable t){
+			System.out.println("Failure message : " + t.getMessage());
+			org.testng.Assert.fail("Assert failed");
+		}*/
+	}
+	
+	public static void captureNokInformation(){
+		IWanna.type("tbNokFirstName", red.getCellData("TestData", "NOKFName", 2));
+		IWanna.type("tbNokSurname", red.getCellData("TestData", "NOKSurname", 2));
+		IWanna.selectFromDropdown("ddRelationship", red.getCellData("TestData", "NOKRelation", 2));
+		/*IWanna.type("tbNokAreaCodeHome", red.getCellData("TestData", "AreaCodeHome", 2));
+		IWanna.type("tbNokTelNoHome", red.getCellData("TestData", "TelNumberHome", 2));
+		IWanna.type("tbNokAreaCodeWork", red.getCellData("TestData", "AreaCodeWork", 2));*/
+		IWanna.type("tbNokCellNo", red.getCellData("TestData", "NOKCell", 2));
+		IWanna.click("btnProcessContinue");
 	}
 	
 	public static void setTestCase(String testCaseName, String id){
