@@ -1,4 +1,4 @@
-package eobfutils;
+package apputils;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -7,7 +7,7 @@ import com.aventstack.extentreports.Status;
 
 import AutomationFramework.BaseClass;
 
-public class CommonUtils extends BaseClass{
+public class EobfCommon extends BaseClass{
 	/**
 	 * navigateToAboutYou
 	 * This method navigates to the About You tab on the online application. 

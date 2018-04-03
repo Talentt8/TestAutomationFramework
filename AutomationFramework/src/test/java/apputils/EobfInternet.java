@@ -1,6 +1,6 @@
-package eobfutils;
+package apputils;
 
-public class Internet extends CommonUtils{
+public class EobfInternet extends EobfCommon{
 	
 	public static void application() throws Exception{
 		System.out.println("The current executing method is : " + Thread.currentThread().getStackTrace()[1].getMethodName());

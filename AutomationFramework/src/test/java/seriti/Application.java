@@ -7,6 +7,6 @@ public class Application extends BaseClass{
 		
 	@Test	
 	public void application() throws Exception{
-		seritiutils.Internet.application();	
+		apputils.SeritiInternet.application();
 	}		
 }

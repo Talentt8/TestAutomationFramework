@@ -7,6 +7,6 @@ public class Application extends BaseClass{
 		
 	@Test	
 	public void application() throws Exception{
-		eobfutils.Internet.application();	
+		apputils.EobfInternet.application();
 	}		
 }
