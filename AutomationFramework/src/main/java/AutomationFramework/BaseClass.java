@@ -252,7 +252,7 @@ public abstract class BaseClass
 	@AfterClass
 	public void tearDown(){
 		log.info("Ending Browser Session");
-		//driver.quit();
+		driver.quit();
 		endTime = getCurrentTimeStamp();
 		System.out.println("End time : " + endTime);
 		try {

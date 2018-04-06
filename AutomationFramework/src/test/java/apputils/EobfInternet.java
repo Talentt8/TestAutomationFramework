@@ -9,5 +9,9 @@ public class EobfInternet extends EobfCommon{
 		captureAddressInformation();
 		captureContactInformation();
 		captureNokInformation();
+		captureYourFinances();
+		captureVehicleDetails();
+		capturePaymentDetails();
+		getApplicationReference();
 	}
 }
