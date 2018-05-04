@@ -2,5 +2,5 @@
 <environment>
 	<env>UAT</env>
 	<appName>EOBF Internet</appName>
-	<appUrl>eu.absa.co.za/vehiclefin/VAFOnline.do</appUrl>
+	<appUrl>https://eu.absa.co.za/vehiclefin/VAFOnline.do</appUrl>
 </environment>

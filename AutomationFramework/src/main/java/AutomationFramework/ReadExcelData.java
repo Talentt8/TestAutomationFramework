@@ -2,6 +2,7 @@ package AutomationFramework;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -27,7 +28,9 @@ public class ReadExcelData {
 	public XSSFWorkbook workbook;
 	private XSSFRow row;
 	private XSSFCell cell;
-	
+	private FileInputStream fis;
+	private FileOutputStream fos;	
+	private String path;
 	
 	/**
 	 * ReadExcelData
@@ -43,7 +46,9 @@ public class ReadExcelData {
 	public ReadExcelData(String excelPath){
 		try {
 			File src = new File(excelPath);
-			FileInputStream fis = new FileInputStream(src);
+			fis = new FileInputStream(src);
+			fos = null;
+			path = excelPath;
 			
 			workbook = new XSSFWorkbook(fis);			
 		} catch (IOException e) {
@@ -82,7 +87,9 @@ public class ReadExcelData {
 			cell = row.getCell(colNum);
 			
 			if (cell.getCellTypeEnum() == CellType.STRING){
-				return cell.getStringCellValue();				
+				String value = cell.getStringCellValue();
+				//fis.close();
+				return value;				
 			}
 			else if (cell.getCellTypeEnum() == CellType.NUMERIC || cell.getCellTypeEnum() == CellType.FORMULA){
 				//cell.setCellType(CellType.STRING);
@@ -99,11 +106,52 @@ public class ReadExcelData {
 			}
 			else{
 				return String.valueOf(cell.getBooleanCellValue());
-			}			
-		}
+			}
+		}		
+		
 		catch(Exception e){
 			e.printStackTrace();
 			return "Data not found";
 		}
 	}
+	
+	public String setCellData(String sheetName, String colName, int rowNum, String value){
+		try{
+			int colNum = -1;
+			sheet = workbook.getSheet(sheetName);
+			row = sheet.getRow(0);
+			
+			for (int i=0; i<row.getLastCellNum(); i++){
+				if (row.getCell(i).getStringCellValue().trim().equalsIgnoreCase(colName)){
+					colNum = i;
+				}
+			}
+			
+			row = sheet.getRow(rowNum-1);
+			//if row does not exist create row
+			if (row == null){
+				row = sheet.createRow(rowNum-1);
+			}
+						
+			cell = row.getCell(colNum);
+			//if cell does not exist create cell
+			if (cell == null){
+				System.out.println("Cannot find column : " + colName);
+				cell = row.createCell(colNum);
+			}
+			
+			cell.setCellValue(value);
+			fos = new FileOutputStream(path);
+			System.out.println(path);
+			workbook.write(fos);
+			fos.close();
+			return "True";
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return "Column not found";
+		}
+	}
+
 }

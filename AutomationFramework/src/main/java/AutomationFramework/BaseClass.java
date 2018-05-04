@@ -138,7 +138,9 @@ public abstract class BaseClass
 		
 		// Load test data sheet so we can use in our test(s)
 		log.debug("Loading test data file");
+		Runtime.getRuntime().exec("taskkill /IM EXCEL.EXE");
 		red = new ReadExcelData(".\\Resources\\" + appName + "\\TestData\\Driver.xlsx");
+		//wed = new WriteExcelData(".\\Resources\\" + appName + "\\TestData\\Driver.xlsx");
 		RunTest.getRows();
 		
 		// Specify the object repository file location.
@@ -252,7 +254,7 @@ public abstract class BaseClass
 	@AfterClass
 	public void tearDown(){
 		log.info("Ending Browser Session");
-		driver.quit();
+		//driver.quit();
 		endTime = getCurrentTimeStamp();
 		System.out.println("End time : " + endTime);
 		try {

@@ -8,10 +8,13 @@ import org.testng.Assert;
 import com.aventstack.extentreports.Status;
 
 import AutomationFramework.BaseClass;
+import AutomationFramework.Executor;
 
 public class EobfCommon extends BaseClass{
 	
 	static int rowIndex = 2;
+	static String screenShotPath;
+	//= Executor.capture();
 	
 	/**
 	 * navigateToAboutYou
@@ -326,10 +329,15 @@ public class EobfCommon extends BaseClass{
 	}
 	
 	public static void getApplicationReference() throws IOException{
+		screenShotPath = Executor.capture();
 		testInfo.log(Status.INFO, "Capture Application reference number");
-		String appRefText = IWanna.getElementValue("txtReferenceNumber");
+		String appRefText = IWanna.getElementText("txtReferenceNumber");
+		String appRef = appRefText.substring(25);
+		System.out.println("App refe: " + appRef);
+		red.setCellData("TestData", "ApplicationNumber", rowIndex, appRef);
 		IWanna.waitForElement("txtApplicationResult",120);
-		//testInfo.log(Status.PASS, "Reference captured" + testInfo.addScreenCaptureFromPath("C:\\Users\\ABMMD9A\\git\\TestAutomationFramework\\AutomationFramework\\Results\\Screenshots\\screenshot03-00-2018 12-0-0.png"));
+		testInfo.log(Status.PASS, "Your reference number is: " + appRef + "    " +testInfo.addScreenCaptureFromPath(screenShotPath));
+		
 	}
 	
 	public static void setTestCase(String testCaseName, String id){

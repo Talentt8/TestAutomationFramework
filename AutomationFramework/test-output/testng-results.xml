@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="86529" started-at="2018-04-06T11:11:34Z" finished-at="2018-04-06T11:13:00Z">
+  <suite name="Default suite" duration-ms="137109" started-at="2018-05-04T06:11:56Z" finished-at="2018-05-04T06:14:14Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="86529" started-at="2018-04-06T11:11:34Z" finished-at="2018-04-06T11:13:00Z">
+    <test name="Default test" duration-ms="137109" started-at="2018-05-04T06:11:56Z" finished-at="2018-05-04T06:14:14Z">
       <class name="eobf.Application">
-        <test-method status="PASS" signature="setup()[pri:0, instance:eobf.Application@63e2203c]" name="setup" is-config="true" duration-ms="147" started-at="2018-04-06T13:11:34Z" finished-at="2018-04-06T13:11:34Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:eobf.Application@63e2203c]" name="setup" is-config="true" duration-ms="165" started-at="2018-05-04T08:11:56Z" finished-at="2018-05-04T08:11:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="setupApplication()[pri:0, instance:eobf.Application@63e2203c]" name="setupApplication" is-config="true" duration-ms="5794" started-at="2018-04-06T13:11:34Z" finished-at="2018-04-06T13:11:40Z">
+        <test-method status="PASS" signature="setupApplication()[pri:0, instance:eobf.Application@63e2203c]" name="setupApplication" is-config="true" duration-ms="6215" started-at="2018-05-04T08:11:57Z" finished-at="2018-05-04T08:12:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupApplication -->
-        <test-method status="PASS" signature="register(java.lang.reflect.Method)[pri:0, instance:eobf.Application@63e2203c]" name="register" is-config="true" duration-ms="5" started-at="2018-04-06T13:11:40Z" finished-at="2018-04-06T13:11:40Z">
+        <test-method status="PASS" signature="register(java.lang.reflect.Method)[pri:0, instance:eobf.Application@63e2203c]" name="register" is-config="true" duration-ms="5" started-at="2018-05-04T08:12:03Z" finished-at="2018-05-04T08:12:03Z">
           <params>
             <param index="0">
               <value>
@@ -26,11 +26,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- register -->
-        <test-method status="PASS" signature="application()[pri:0, instance:eobf.Application@63e2203c]" name="application" duration-ms="79217" started-at="2018-04-06T13:11:40Z" finished-at="2018-04-06T13:12:59Z">
+        <test-method status="PASS" signature="application()[pri:0, instance:eobf.Application@63e2203c]" name="application" duration-ms="130072" started-at="2018-05-04T08:12:03Z" finished-at="2018-05-04T08:14:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- application -->
-        <test-method status="PASS" signature="captureStatus(org.testng.ITestResult)[pri:0, instance:eobf.Application@63e2203c]" name="captureStatus" is-config="true" duration-ms="365" started-at="2018-04-06T13:12:59Z" finished-at="2018-04-06T13:12:59Z">
+        <test-method status="PASS" signature="captureStatus(org.testng.ITestResult)[pri:0, instance:eobf.Application@63e2203c]" name="captureStatus" is-config="true" duration-ms="304" started-at="2018-05-04T08:14:13Z" finished-at="2018-05-04T08:14:13Z">
           <params>
             <param index="0">
               <value>
@@ -41,11 +41,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- captureStatus -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:eobf.Application@63e2203c]" name="tearDown" is-config="true" duration-ms="705" started-at="2018-04-06T13:12:59Z" finished-at="2018-04-06T13:13:00Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:eobf.Application@63e2203c]" name="tearDown" is-config="true" duration-ms="2" started-at="2018-05-04T08:14:13Z" finished-at="2018-05-04T08:14:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="cleanUp()[pri:0, instance:eobf.Application@63e2203c]" name="cleanUp" is-config="true" duration-ms="280" started-at="2018-04-06T13:13:00Z" finished-at="2018-04-06T13:13:00Z">
+        <test-method status="PASS" signature="cleanUp()[pri:0, instance:eobf.Application@63e2203c]" name="cleanUp" is-config="true" duration-ms="329" started-at="2018-05-04T08:14:13Z" finished-at="2018-05-04T08:14:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanUp -->

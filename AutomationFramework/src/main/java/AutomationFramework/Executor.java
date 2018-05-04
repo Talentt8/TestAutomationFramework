@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -14,6 +16,8 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -34,6 +38,10 @@ public class Executor extends BaseClass{
 	
 	Set<String> s1;
 	Iterator<String> i1;
+	
+	Set<String> if1;
+	Iterator<String> f1;
+	int iFrames;
 
 	/**
 	 * Click
@@ -53,33 +61,55 @@ public class Executor extends BaseClass{
 		}
 		catch(Exception e){
 			log.debug("Unable to locate " + element + " element in main window : " + e.getStackTrace());
-			System.out.println(e.getStackTrace());
-			log.debug("Switching windows");
+			System.out.println(e.getStackTrace());									
 			
 			//Switch windows
 			s1 = driver.getWindowHandles();		
 		    i1 = s1.iterator();
-		    			
-			while(i1.hasNext())			
-	        {		
-	            String childWindow=i1.next();		            		
-	            if(!mainWindow.equalsIgnoreCase(childWindow))			
-	            {    		                 
-	                // Switching to Child window
-	                driver.switchTo().window(childWindow);	
-	                log.info("Clicking " + element + " element");
-	                try{
-	        			driver.findElement(By.xpath(pro.getProperty(element))).click();
-	        		}
-	        		catch(Exception e1){
-	        			log.debug("Unable to locate " + element + " element in child window " + childWindow + " : " + e1.getStackTrace());	            
-	        		}
-	            }		
-	        }
+		    	
+		    if (s1.size() > 1){
+		    	log.debug("Switching windows");
+		    	while(i1.hasNext())			
+		        {		
+		            String childWindow=i1.next();		            		
+		            if(!mainWindow.equalsIgnoreCase(childWindow))			
+		            {    		                 
+		                // Switching to Child window
+		                driver.switchTo().window(childWindow);	
+		                log.info("Clicking " + element + " element");
+		                try{
+		        			driver.findElement(By.xpath(pro.getProperty(element))).click();
+		        		}
+		        		catch(Exception e1){
+		        			log.debug("Unable to locate " + element + " element in child window " + childWindow + " : " + e1.getStackTrace());	            
+		        		}
+		            }		
+		        }
+		    }
+			
 			
 			// Switching to Parent window i.e Main Window.
 	        driver.switchTo().window(mainWindow);
 	        
+	      //Switch iFrames
+	        log.debug("Switching iFrames");
+			iFrames = driver.findElements(By.tagName("iframe")).size();
+			int frames = driver.findElements(By.tagName("frameset")).size();
+			System.out.println("Frames : " + frames);
+			System.out.println("iFrames : " + iFrames);
+			for (int i=0; i<iFrames; i++){
+				driver.switchTo().frame(i);				
+                try{
+                	log.info("Clicking " + element + " element");
+        			driver.findElement(By.xpath(pro.getProperty(element))).click();
+        			break;
+        		}
+        		catch(Exception e1){
+        			log.debug("Unable to locate " + element + " element in iFrame " + e1.getStackTrace());	            
+        		}
+			}
+			driver.switchTo().defaultContent();
+	        	      
 			// Closing the Child Window.
             // driver.close();	
 		}
@@ -107,33 +137,55 @@ public class Executor extends BaseClass{
 		catch(Exception e){
 			log.debug("Unable to locate " + element + " element : " + e.getStackTrace());
 			System.out.println(e.getStackTrace());
-			log.debug("Switching windows");
 			
 			//Switch windows
 			s1 = driver.getWindowHandles();		
 		    i1 = s1.iterator();
-		    			
-			while(i1.hasNext())			
-	        {		
-	            String childWindow=i1.next();		            		
-	            if(!mainWindow.equalsIgnoreCase(childWindow))			
-	            {    		                 
-	                // Switching to Child window
-	                driver.switchTo().window(childWindow);	 
-	                try{
-	                	log.info("Clearing " + element + " text box");
-	        			driver.findElement(By.xpath(pro.getProperty(element))).clear();
-	        			
-	        			log.info("Typing " + text + " into " + element);
-	        			driver.findElement(By.xpath(pro.getProperty(element))).sendKeys(text);
-	        		}
-	        		catch(Exception e1){
-	        			log.debug("Unable to locate " + element + " element in child window " + childWindow + " : " + e1.getStackTrace());	            
-	        		}
-	            }		
-	        }
+		    
+		    if ((s1.size() > 1)){
+		    	log.debug("Switching windows");
+		    	while(i1.hasNext())			
+		        {		
+		            String childWindow=i1.next();		            		
+		            if(!mainWindow.equalsIgnoreCase(childWindow))			
+		            {    		                 
+		                // Switching to Child window
+		                driver.switchTo().window(childWindow);	 
+		                try{
+		                	log.info("Clearing " + element + " text box");
+		        			driver.findElement(By.xpath(pro.getProperty(element))).clear();
+		        			
+		        			log.info("Typing " + text + " into " + element);
+		        			driver.findElement(By.xpath(pro.getProperty(element))).sendKeys(text);
+		        		}
+		        		catch(Exception e1){
+		        			log.debug("Unable to locate " + element + " element in child window " + childWindow + " : " + e1.getStackTrace());	            
+		        		}
+		            }		
+		        }
+		    }
+			
 			// Switching to Parent window i.e Main Window.
 	        driver.switchTo().window(mainWindow);
+	        
+	      //Switch iFrames
+	        log.debug("Switching iFrames");
+			iFrames = driver.findElements(By.tagName("iframe")).size();
+			for (int i=0; i<iFrames; i++){
+				driver.switchTo().frame(i);
+				try{
+                	log.info("Clearing " + element + " text box");
+        			driver.findElement(By.xpath(pro.getProperty(element))).clear();
+        			
+        			log.info("Typing " + text + " into " + element);
+        			driver.findElement(By.xpath(pro.getProperty(element))).sendKeys(text);
+        			break;
+        		}
+        		catch(Exception e1){
+        			log.debug("Unable to locate " + element + " element in iFrame " + e1.getStackTrace());	            
+        		}
+			}
+			driver.switchTo().defaultContent();
 		}
 	}	
 		
@@ -155,30 +207,55 @@ public class Executor extends BaseClass{
 		catch(Exception e){
 			log.debug("Unable to locate " + element + " element : " + e.getStackTrace());
 			System.out.println(e.getStackTrace());
-			log.debug("Switching windows");
 			
 			//Switch windows
 			s1 = driver.getWindowHandles();		
 		    i1 = s1.iterator();
-		    			
-			while(i1.hasNext())			
-	        {		
-	            String childWindow=i1.next();		            		
-	            if(!mainWindow.equalsIgnoreCase(childWindow))			
-	            {    		                 
-	                // Switching to Child window
-	                driver.switchTo().window(childWindow);	 
-	                try{
-	                	log.info("Typing " + text + " into " + element);
-	                	driver.findElement(By.xpath(pro.getProperty(element))).sendKeys(text);
-	        		}
-	        		catch(Exception e1){
-	        			log.debug("Unable to locate " + element + " element in child window " + childWindow + " : " + e1.getStackTrace());	            
-	        		}
-	            }		
-	        }
-			// Switching to Parent window i.e Main Window.
-	        driver.switchTo().window(mainWindow);
+		    		   		    		
+		    if (s1.size() > 1){
+		    	log.debug("Switching windows");
+		    	while(i1.hasNext())			
+		        {		
+					log.debug("Switching windows");
+		            String childWindow=i1.next();		            		
+		            if(!mainWindow.equalsIgnoreCase(childWindow))			
+		            {    		                 
+		                // Switching to Child window
+		                driver.switchTo().window(childWindow);	 
+		                try{
+		                	log.info("Typing " + text + " into " + element);
+		                	driver.findElement(By.xpath(pro.getProperty(element))).sendKeys(text);
+		        		}
+		        		catch(Exception e1){
+		        			log.debug("Unable to locate " + element + " element in child window " + childWindow + " : " + e1.getStackTrace());	            
+		        		}
+		            }		
+		        }
+		    	// Switching to Parent window i.e Main Window.
+		        driver.switchTo().window(mainWindow);
+		    }
+			
+			
+	        
+	      //Switch iFrames
+	        log.debug("Switching iframes");
+			iFrames = driver.findElements(By.tagName("iframe")).size();
+			System.out.println("iFrames : " + iFrames);
+			for (int i=0; i<iFrames; i++){				
+				driver.switchTo().frame(driver.findElement(By.xpath("//iframe")));
+				try{    
+					System.out.println(i);
+        			log.info("Typing " + text + " into " + element);
+        			driver.findElement(By.xpath(pro.getProperty(element))).sendKeys(text);
+        			System.out.println("iFrame number : " + i);
+        			driver.switchTo().defaultContent();
+        			break;
+        		}
+        		catch(Exception e1){
+        			log.debug("Unable to locate " + element + " element in iFrame " + e1.getStackTrace());	            
+        		}
+			}		
+	        	      
 		}		
 	}
 	
@@ -344,6 +421,12 @@ public class Executor extends BaseClass{
         log.info("The screenshot path is " + dest);
         return dest;
     }
+	
+	
+	public void hoverAndCLick(String dropdown, String select){
+		Actions action = new Actions(driver);		 
+		action.moveToElement(driver.findElement(By.xpath(pro.getProperty(dropdown)))).moveToElement(driver.findElement(By.xpath(pro.getProperty(select)))).click().build().perform();
+	}
 			
 	public String firstName(){
 		return "";
@@ -362,6 +445,10 @@ public class Executor extends BaseClass{
         return driver.findElement(By.xpath(pro.getProperty(element))).getAttribute("value");
     }
     
+    public String getElementText (String element) {
+        return driver.findElement(By.xpath(pro.getProperty(element))).getText();
+    }
+    
     /**
 	 * wait
 	 * Waits for the specified element to be displayed on screen. 
@@ -373,7 +460,14 @@ public class Executor extends BaseClass{
 	 */
     public void waitForElement(String element, int timeout){
     	WebDriverWait wait = new WebDriverWait(driver, timeout);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(pro.getProperty(element))));
+    	log.info("Waiting " + timeout + " seconds for " + element + " to be visible.");
+    	try{
+    		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(pro.getProperty(element))));
+    	}
+    	catch(Exception e){
+    		log.info(e.getMessage());
+    	}
+		
     }
     
     
@@ -387,7 +481,13 @@ public class Executor extends BaseClass{
 	 * @see         
 	 */
     public void wait(int seconds){
-    	log.info("Waiting " + seconds + " seconds.");
-    	driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+    	if (seconds == 1){
+    		log.info("Waiting " + seconds + " second.");
+    	}
+    	else{
+    		log.info("Waiting " + seconds + " seconds.");
+    		driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+    	}    	
+    	
     }
 }
