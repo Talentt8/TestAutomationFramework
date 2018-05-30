@@ -1,5 +1,7 @@
 package apputils;
 
+import java.io.IOException;
+
 public class EobfGlobal extends EobfCommon{
 	
 	public static void application() throws Exception{
@@ -14,4 +16,9 @@ public class EobfGlobal extends EobfCommon{
 		capturePaymentDetails();
 		getApplicationReference();
 	}
+	
+	public static void podium() throws InterruptedException, IOException{
+		getPodium();
+	}
+	
 }

@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
@@ -22,7 +23,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.github.javafaker.Faker;
+//import com.github.javafaker.Faker;
 
 import AutomationFramework.BaseClass;
 
@@ -131,8 +132,8 @@ public class Executor extends BaseClass{
 			log.info("Clearing " + element + " text box");
 			driver.findElement(By.xpath(pro.getProperty(element))).clear();
 			
-			log.info("Typing " + text + " into " + element);
-			driver.findElement(By.xpath(pro.getProperty(element))).sendKeys(text);
+			log.info("Typing " + text.trim() + " into " + element);
+			driver.findElement(By.xpath(pro.getProperty(element))).sendKeys(text.trim());
 		}
 		catch(Exception e){
 			log.debug("Unable to locate " + element + " element : " + e.getStackTrace());
@@ -202,7 +203,7 @@ public class Executor extends BaseClass{
 	public void type(String element, String text){		
 		try{
 			log.info("Typing " + text + " into " + element);
-			driver.findElement(By.xpath(pro.getProperty(element))).sendKeys(text);
+			driver.findElement(By.xpath(pro.getProperty(element))).sendKeys(text.trim());
 		}
 		catch(Exception e){
 			log.debug("Unable to locate " + element + " element : " + e.getStackTrace());
@@ -257,6 +258,16 @@ public class Executor extends BaseClass{
 			}		
 	        	      
 		}		
+	}
+	
+	public void type(String element, Keys keys){
+		try{
+			log.info("Typing " + keys + " into " + element);
+			driver.findElement(By.xpath(pro.getProperty(element))).sendKeys(Keys.ENTER);
+		}
+		catch(Exception e){
+			
+		}
 	}
 	
 	/**
@@ -458,14 +469,16 @@ public class Executor extends BaseClass{
 	 * @return     
 	 * @see         
 	 */
-    public void waitForElement(String element, int timeout){
+    public boolean waitForElement(String element, int timeout){
     	WebDriverWait wait = new WebDriverWait(driver, timeout);
     	log.info("Waiting " + timeout + " seconds for " + element + " to be visible.");
     	try{
     		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(pro.getProperty(element))));
+    		return true;
     	}
     	catch(Exception e){
     		log.info(e.getMessage());
+    		return false;
     	}
 		
     }

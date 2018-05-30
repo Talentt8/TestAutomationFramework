@@ -53,6 +53,7 @@ public abstract class BaseClass
 	public static Executor IWanna = new Executor();
 	public static String mainWindow;
 	public static ReadExcelData red;
+	public static int firstRow = 2;
 	public static int currentRow = 2;
 		
 	//Reporter
@@ -61,8 +62,9 @@ public abstract class BaseClass
 	public static ExtentHtmlReporter htmlReporter;
 	
 	@BeforeTest
-	public void setup() throws ParserConfigurationException, SAXException, IOException{
+	public void setup() throws Exception{
 		
+		setupApplication();
 		//
 		//Declare config.xml file path
 		File xmlFile = new File(System.getProperty("user.dir") + "\\config\\config.xml");
@@ -81,7 +83,7 @@ public abstract class BaseClass
 		String appUrl = element.getElementsByTagName("appUrl").item(0).getTextContent();
 		//
 		
-		htmlReporter = new ExtentHtmlReporter(new File(System.getProperty("user.dir") + "/Resources/" + appName + "/Results/AutomationReport.html"));
+		htmlReporter = new ExtentHtmlReporter(new File(System.getProperty("user.dir") + "/Resources/" + appName + "/Results/AutomationReport " + new SimpleDateFormat("yyyy-MM-dd hh-mm-ss").format(new Date()) + ".html"));
 		htmlReporter.loadXMLConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
 		reports = new ExtentReports();		
 		
@@ -114,12 +116,13 @@ public abstract class BaseClass
 	}
 	
 	@AfterTest
-	public void cleanUp(){
+	public void cleanUp(){		
 		reports.flush();
+		tearDown();
 	}
 	//end reporter
 	
-	@BeforeClass
+	//@BeforeClass
 	public void setupApplication() throws Exception
 	{	
 		//Declare config.xml file path
@@ -141,7 +144,7 @@ public abstract class BaseClass
 		Runtime.getRuntime().exec("taskkill /IM EXCEL.EXE");
 		red = new ReadExcelData(".\\Resources\\" + appName + "\\TestData\\Driver.xlsx");
 		//wed = new WriteExcelData(".\\Resources\\" + appName + "\\TestData\\Driver.xlsx");
-		RunTest.getRows();
+		//RunTest.getRows();
 		
 		// Specify the object repository file location.
 		File src = new File(".\\Resources\\" + appName + "\\ObjectRepository\\Object_Repo.properties");
@@ -159,7 +162,7 @@ public abstract class BaseClass
 		
 		startTime = getCurrentTimeStamp();
 		launchBrowser(browser);
-		driver.get(red.getCellData("Credentials", "url", currentRow));			
+		//driver.get(red.getCellData("Credentials", "url", currentRow));			
 		Thread.sleep(2000);
 		
 		log.debug("Application Started");
@@ -249,12 +252,18 @@ public abstract class BaseClass
 	 * <p>
 	 * This method closes the browser session 
 	 *
-	 * @return      
+	 * @return      void
 	 */
-	@AfterClass
+	//@AfterClass
 	public void tearDown(){
 		log.info("Ending Browser Session");
-		//driver.quit();
+		try{
+			driver.quit();
+		}
+		catch(Exception e){
+			log.debug(e.getMessage());
+		}
+		
 		endTime = getCurrentTimeStamp();
 		System.out.println("End time : " + endTime);
 		try {

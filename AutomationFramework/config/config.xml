@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <environment>
 	<env>UAT</env>
-	<appName>EOBF Internet</appName>
+	<appName>AVAFEndToEnd</appName>
 	<appUrl>https://eu.absa.co.za/vehiclefin/VAFOnline.do</appUrl>
 </environment>

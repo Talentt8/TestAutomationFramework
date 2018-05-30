@@ -2,54 +2,46 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="137109" started-at="2018-05-04T06:11:56Z" finished-at="2018-05-04T06:14:14Z">
+  <suite name="Default suite" duration-ms="3515213" started-at="2018-05-30T09:55:54Z" finished-at="2018-05-30T10:54:29Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="137109" started-at="2018-05-04T06:11:56Z" finished-at="2018-05-04T06:14:14Z">
-      <class name="eobf.Application">
-        <test-method status="PASS" signature="setup()[pri:0, instance:eobf.Application@63e2203c]" name="setup" is-config="true" duration-ms="165" started-at="2018-05-04T08:11:56Z" finished-at="2018-05-04T08:11:57Z">
+    <test name="Default test" duration-ms="3515213" started-at="2018-05-30T09:55:54Z" finished-at="2018-05-30T10:54:29Z">
+      <class name="sap.ReverseContract">
+        <test-method status="PASS" signature="setup()[pri:0, instance:sap.ReverseContract@a7e666]" name="setup" is-config="true" duration-ms="4932" started-at="2018-05-30T11:55:54Z" finished-at="2018-05-30T11:55:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="setupApplication()[pri:0, instance:eobf.Application@63e2203c]" name="setupApplication" is-config="true" duration-ms="6215" started-at="2018-05-04T08:11:57Z" finished-at="2018-05-04T08:12:03Z">
+        <test-method status="PASS" signature="individual()[pri:0, instance:sap.ReverseContract@a7e666]" name="individual" duration-ms="3508790" started-at="2018-05-30T11:55:59Z" finished-at="2018-05-30T12:54:28Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setupApplication -->
-        <test-method status="PASS" signature="register(java.lang.reflect.Method)[pri:0, instance:eobf.Application@63e2203c]" name="register" is-config="true" duration-ms="5" started-at="2018-05-04T08:12:03Z" finished-at="2018-05-04T08:12:03Z">
+        </test-method> <!-- individual -->
+        <test-method status="PASS" signature="register(java.lang.reflect.Method)[pri:0, instance:sap.ReverseContract@a7e666]" name="register" is-config="true" duration-ms="0" started-at="2018-05-30T11:55:59Z" finished-at="2018-05-30T11:55:59Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void eobf.Application.application() throws java.lang.Exception]]>
+                <![CDATA[public void sap.ReverseContract.individual() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- register -->
-        <test-method status="PASS" signature="application()[pri:0, instance:eobf.Application@63e2203c]" name="application" duration-ms="130072" started-at="2018-05-04T08:12:03Z" finished-at="2018-05-04T08:14:13Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- application -->
-        <test-method status="PASS" signature="captureStatus(org.testng.ITestResult)[pri:0, instance:eobf.Application@63e2203c]" name="captureStatus" is-config="true" duration-ms="304" started-at="2018-05-04T08:14:13Z" finished-at="2018-05-04T08:14:13Z">
+        <test-method status="PASS" signature="captureStatus(org.testng.ITestResult)[pri:0, instance:sap.ReverseContract@a7e666]" name="captureStatus" is-config="true" duration-ms="345" started-at="2018-05-30T12:54:28Z" finished-at="2018-05-30T12:54:28Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=application status=SUCCESS method=Application.application()[pri:0, instance:eobf.Application@63e2203c] output={null}]]]>
+                <![CDATA[[TestResult name=individual status=SUCCESS method=ReverseContract.individual()[pri:0, instance:sap.ReverseContract@a7e666] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- captureStatus -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:eobf.Application@63e2203c]" name="tearDown" is-config="true" duration-ms="2" started-at="2018-05-04T08:14:13Z" finished-at="2018-05-04T08:14:13Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="cleanUp()[pri:0, instance:eobf.Application@63e2203c]" name="cleanUp" is-config="true" duration-ms="329" started-at="2018-05-04T08:14:13Z" finished-at="2018-05-04T08:14:14Z">
+        <test-method status="PASS" signature="cleanUp()[pri:0, instance:sap.ReverseContract@a7e666]" name="cleanUp" is-config="true" duration-ms="1130" started-at="2018-05-30T12:54:28Z" finished-at="2018-05-30T12:54:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanUp -->
-      </class> <!-- eobf.Application -->
+      </class> <!-- sap.ReverseContract -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
